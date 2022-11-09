@@ -1,0 +1,2 @@
+class DeadPage(Exception):
+    pass

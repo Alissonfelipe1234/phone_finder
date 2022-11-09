@@ -13,8 +13,6 @@ REGEX_CLEAR_STRING = r"[^0-9\+\s\(\)]"
 
 
 def get_phones_number(text):
-    print(text)
-    exit()
     text = text.split("/head>")[1]
     numbers = re.findall(REGEX_PHONES, text)
     return numbers

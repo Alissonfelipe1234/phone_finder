@@ -1,4 +1,5 @@
 import sys
+from classes import DeadPage
 from concurrent.futures import as_completed
 from controller import get_icon, get_phones_number
 from requests_futures.sessions import FuturesSession
@@ -11,7 +12,10 @@ futures=[session.get(i) for i in urls]
 
 for future in as_completed(futures, timeout=5):
     response = future.result()
-    if re
+    if response.status_code != 200:
+        results.append(DeadPage)
+        continue
+    
     text = response.text
     url = response.request.url
     results.append({
