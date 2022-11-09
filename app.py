@@ -10,11 +10,14 @@ results = []
 futures=[session.get(i) for i in urls]
 
 for future in as_completed(futures, timeout=5):
-    resp = future.result()
+    response = future.result()
+    if re
+    text = response.text
+    url = response.request.url
     results.append({
-        'logo': get_icon(resp.request.url, resp.text),
-        'phones': get_phones_number(resp.text),
-        'website': resp.request.url,
+        'logo': get_icon(url, text),
+        'phones': get_phones_number(text),
+        'website': url,
     })
 
 
