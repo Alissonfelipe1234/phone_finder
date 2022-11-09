@@ -8,7 +8,7 @@ REGEX_ICON = [
     r"rel=\"alternate icon\".*?href=\"(.*?)\"",
     r"(?<=href=[\"\']).*(?=[\"\'])"
 ]
-REGEX_URL = r"^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/\n]+)"
+REGEX_DOMAIN = r"^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/\n]+)"
 REGEX_CLEAR_STRING = r"[^0-9\+\s\(\)]"
 
 
@@ -29,5 +29,5 @@ def get_icon(url, text):
     icon = re.search(REGEX_ICON[3], icon.group()).group().replace('"', '')
     if icon.startswith("http"):
         return icon
-    url = re.search(REGEX_URL, url).group()
+    url = re.search(REGEX_DOMAIN, url).group()
     return f"{url}{icon}"
