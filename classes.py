@@ -1,2 +1,3 @@
 class DeadPage(Exception):
-    pass
+    def __str__(self):
+        return "DeadPage"
